@@ -13,6 +13,7 @@ const AppRoutes = () => {
 				<Route exact path="/signup" component={SignUp} />
 				<Switch>
 					<PrivateRoute exact path="/dash" component={Dashboard}></PrivateRoute>
+					<PrivateRoute exact path="/dash/folder/:folderID" component={Dashboard}></PrivateRoute>
 				</Switch>
 			</Router>
 		</>

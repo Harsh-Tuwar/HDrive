@@ -4,7 +4,6 @@ import { createLogger } from "redux-logger";
 import rootReducer from "../rootReducers";
 
 const middlewares = [];
-// let useDevTools = false;
 
 middlewares.push(thunkMiddleware);
 
@@ -21,8 +20,6 @@ if (process.env.NODE_ENV === "development") {
 	});
 
 	middlewares.push(loggerMiddleware);
-
-	// useDevTools = true;
 }
 
 /**

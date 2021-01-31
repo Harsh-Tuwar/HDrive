@@ -1,7 +1,6 @@
 import lf from "localforage";
 import { auth } from "../firebase";
 import { SET_CURRENT_USER } from "../redux/modules/auth/authTypes";
-import { updateFolder } from "../redux/modules/folder/folderActions";
 import { UPDATE_FOLDER } from "../redux/modules/folder/folderTypes";
 
 export const drawerWidth = 240;

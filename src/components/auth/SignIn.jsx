@@ -80,7 +80,7 @@ const SignIn = (props) => {
 
 	useEffect(() => {
 		if (props.auth.loggedIn) {
-			props.history.push("dash");
+			props.history.push("dash/folder/root_folder");
 		}
 	});
 

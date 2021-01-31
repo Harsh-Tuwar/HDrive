@@ -1,4 +1,4 @@
-import { SELECT_FOLDER, UPDATE_FOLDER, SET_CHILD_FOLDERS } from "./folderTypes";
+import { SELECT_FOLDER, UPDATE_FOLDER, SET_CHILD_FOLDERS, SET_CHILD_FILES } from "./folderTypes";
 
 const initialState = {
 	folderID: null,
@@ -7,7 +7,7 @@ const initialState = {
 	childFiles: []
 };
 
-const ROOT_FOLDER = { name: "Root", id: "9Iz4bdk7mHXCRb3Ou8Ot", path: [] };
+const ROOT_FOLDER = { name: "Root", id: "root_folder", path: [] };
 
 export default (state = initialState, action) => {
 	switch (action.type) {
@@ -23,13 +23,19 @@ export default (state = initialState, action) => {
 		case UPDATE_FOLDER:
 			return {
 				...state,
-				folder: (state.folder === null) ? ROOT_FOLDER : action.payload
+				folder: (!action.payload) ? ROOT_FOLDER : action.payload
 			};
 		
 		case SET_CHILD_FOLDERS:
 			return {
 				...state,
 				childFolders: action.payload
+			};
+		
+		case SET_CHILD_FILES:
+			return {
+				...state,
+				childFiles: action.payload
 			};
 		
 		default:

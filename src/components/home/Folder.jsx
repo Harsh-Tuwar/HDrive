@@ -8,7 +8,9 @@ const useStyles = makeStyles((theme) => ({
 	btn: {
 		margin: theme.spacing(1),
 		textOverflow: "ellipsis",
-		whiteSpace: "nowrap"
+		whiteSpace: "nowrap",
+		width: 160,
+		justifyContent: "flex-start"
 	}
 }));
 
@@ -18,11 +20,13 @@ const Folder = ({ folder }) => {
 	return (
 		<Button
 			variant="contained"
-			color="secondary"
+			color="default"
 			className={classes.btn}
 			startIcon={<FolderIcon />}
+			component={Link}
+			to={`/dash/folder/${folder.id}`}
 		>
-			{folder.name}
+			{(folder.name.length > 12) ? folder.name.slice(0, 11).concat("...") : folder.name}
 		</Button>
 	);
 };
