@@ -1,13 +1,13 @@
-import { Grid, Container, makeStyles, CssBaseline, Typography, Button } from "@material-ui/core";
-import { connect } from "react-redux";
-import React from "react";
 import { auth } from "../../firebase";
-import clsx from "clsx";
-import PropTypes from "prop-types";
-import InfoContainer from "./InfoContainer";
-import { useParams } from "react-router-dom";
+import { connect } from "react-redux";
 import { Folder, File } from "./index";
+import { Grid, Container, makeStyles, CssBaseline, Typography } from "@material-ui/core";
 import { updateFolder, setChildFolders, setChildFiles } from "../../redux/modules/folder/folderActions";
+import { useParams } from "react-router-dom";
+import clsx from "clsx";
+import InfoContainer from "./InfoContainer";
+import PropTypes from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
 	dashFont: {
