@@ -80,7 +80,7 @@ const Dashboard = (props) => {
 			<div className={classes.infoContainer}>
 				<InfoContainer currentFolder={folder} />
 			</div>
-			<Grid container direction="row" spacing={1} className={classes.foldersContainer}>
+			<Grid container direction="row" className={classes.foldersContainer}>
 				{childFolders &&
 					childFolders.length > 0 &&
 					childFolders.map((fld) => {

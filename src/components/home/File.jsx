@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: theme.spacing(1),
 		textOverflow: "ellipsis",
 		whiteSpace: "nowrap",
-		width: 160,
+		width: 150,
 		justifyContent: "flex-start"
 	}
 }));
