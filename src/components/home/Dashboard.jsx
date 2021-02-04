@@ -8,6 +8,8 @@ import clsx from "clsx";
 import InfoContainer from "./InfoContainer";
 import PropTypes from "prop-types";
 import React from "react";
+import { MyContextMenu } from "../layout";
+import { setItem } from "localforage";
 
 const useStyles = makeStyles((theme) => ({
 	dashFont: {
@@ -40,16 +42,45 @@ const useStyles = makeStyles((theme) => ({
 
 const Dashboard = (props) => {
 	const me = auth.currentUser;
+	const initialState = { x: null, y: null };
+	const [state, setState] = React.useState(initialState);
+	const [item, setItem] = React.useState(null);
 	const { folderID } = useParams();
 	const classes = useStyles();
 	const { folder, childFolders, childFiles } = props.folder;
 	let uname = "User";
+
+	const handleClose = (e) => {
+		setState({ x: null, y: null });
+		
+		if (item.hasOwnProperty("url")) { // file
+			switch (e.currentTarget.id) {
+				case "open":
+					window.open(item.url, "_blank");
+					break;
+				
+				default: return;
+			}
+		} else { // folder
+
+		}
+	};
 
 	React.useEffect(() => {
 		props.updateFolder(folderID);
 		props.setChildFolders(folderID, me.uid);
 		props.setChildFiles(folderID, me.uid);
 	}, [folderID]);
+
+	const handleClick = (event, item) => {
+		event.preventDefault();
+		setState({
+			x: event.clientX - 2,
+			y: event.clientY - 4,
+		});
+
+		setItem(item);
+	};
 
 	const getGreetings = () => {
 		const today = new Date();
@@ -84,19 +115,20 @@ const Dashboard = (props) => {
 				{childFolders &&
 					childFolders.length > 0 &&
 					childFolders.map((fld) => {
-						return <Grid item key={fld.id}><Folder folder={fld} /></Grid>;
+						return <Grid item key={fld.id} onContextMenu={(e) => handleClick(e, fld)} style={{ cursor: "context-menu" }}><Folder folder={fld} /></Grid>;
 					})
 				}
 			</Grid>
-			{childFolders.length > 0 && childFiles.length > 0 && <hr style={{ margin: "40px 0px" }}/>}
+			{childFolders.length > 0 && childFiles.length > 0 && <hr style={{ margin: "40px 0px" }} />}
 			<Grid container direction="row" spacing={1} className={classes.foldersContainer}>
 				{childFiles &&
 					childFiles.length > 0 &&
 					childFiles.map((file) => {
-						return <Grid item key={file.id}><File file={file} /></Grid>;
+						return <Grid item key={file.id} onContextMenu={(e) => handleClick(e, file)} style={{ cursor: "context-menu" }}><File file={file} /></Grid>;
 					})
 				}
 			</Grid>
+			{state.x && state.y && <MyContextMenu posX={state.x} posY={state.y} handleClose={handleClose} />}
 		</Container>
 	);
 };

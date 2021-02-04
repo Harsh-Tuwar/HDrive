@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import AppRoutes from "../components/routes/AppRoutes";
 import config from "../redux/store/config";
 import * as utils from "../utils";
-import { updateFolder } from "../redux/modules/folder/folderActions";
 
 // Redux store
 const store = config();
@@ -23,7 +22,8 @@ const App = () => {
 		
 		test();
 	}, []);
-
+	
+	document.addEventListener("contextmenu", (e) => e.preventDefault());
 	return(
 		<Provider store={store}>
 			<CssBaseline />
