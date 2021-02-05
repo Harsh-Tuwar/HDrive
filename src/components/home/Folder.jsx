@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
 		margin: theme.spacing(1),
 		textOverflow: "ellipsis",
 		whiteSpace: "nowrap",
-		width: 150,
+		width: 300,
 		justifyContent: "flex-start"
 	}
 }));
@@ -26,7 +26,7 @@ const Folder = ({ folder }) => {
 			component={Link}
 			to={`/dash/folder/${folder.id}`}
 		>
-			{(folder.name.length > 12) ? folder.name.slice(0, 11).concat("...") : folder.name}
+			{(folder.name.length > 29) ? folder.name.slice(0, 25).concat("...") : folder.name}
 		</Button>
 	);
 };

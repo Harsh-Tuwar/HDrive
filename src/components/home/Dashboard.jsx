@@ -62,7 +62,15 @@ const Dashboard = (props) => {
 				default: return;
 			}
 		} else { // folder
-
+			switch (e.currentTarget.id) {
+				case "open":
+					const s = document.getElementById(`${item.id}`);
+					const link = s.firstChild;
+					link.click();
+					break;
+				
+				default: return;
+			}
 		}
 	};
 
@@ -111,11 +119,12 @@ const Dashboard = (props) => {
 			<div className={classes.infoContainer}>
 				<InfoContainer currentFolder={folder} />
 			</div>
+			<br /><br />
 			<Grid container direction="row" className={classes.foldersContainer}>
 				{childFolders &&
 					childFolders.length > 0 &&
 					childFolders.map((fld) => {
-						return <Grid item key={fld.id} onContextMenu={(e) => handleClick(e, fld)} style={{ cursor: "context-menu" }}><Folder folder={fld} /></Grid>;
+						return <Grid item key={fld.id} id={fld.id} onContextMenu={(e) => handleClick(e, fld)} style={{ cursor: "context-menu" }}><Folder folder={fld} /></Grid>;
 					})
 				}
 			</Grid>
