@@ -1,5 +1,5 @@
 import lf from "localforage";
-import { auth } from "../firebase";
+import { masterAuth as auth } from "../firebase";
 import { SET_CURRENT_USER } from "../redux/modules/auth/authTypes";
 import { UPDATE_FOLDER } from "../redux/modules/folder/folderTypes";
 

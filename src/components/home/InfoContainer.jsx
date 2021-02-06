@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Button, makeStyles, FormControl, Input, InputLabel, LinearProgress, IconButton } from "@material-ui/core";
 import { Add, CloudUpload, Close } from "@material-ui/icons";
 import ReactDOM from "react-dom";
-import { database, auth, storage } from "../../firebase";
+import { masterDatabase as database, masterAuth as auth, masterStorage as storage } from "../../firebase";
 import { MyBreadCrumbs } from "./index";
 import { MyDialog } from "../misc";
 import PropTypes from "prop-types";

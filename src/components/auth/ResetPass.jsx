@@ -11,7 +11,7 @@ import {
 	Paper,
 	Typography,
 } from "@material-ui/core";
-import { auth } from "../../firebase";
+import { masterAuth as auth } from "../../firebase";
 import { connect } from "react-redux";
 import { RotateLeft } from "@material-ui/icons";
 import PropTypes from "prop-types";
