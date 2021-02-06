@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React from "react";
 import { SignIn, ResetPass, SignUp } from "../auth";
-import { Dashboard } from "../home";
+import { Dashboard, Drives } from "../home";
 import PrivateRoute from "../private-route/PrivateRoute";
 
 const AppRoutes = () => {
@@ -12,8 +12,8 @@ const AppRoutes = () => {
 				<Route exact path="/reset" component={ResetPass} />
 				<Route exact path="/signup" component={SignUp} />
 				<Switch>
-					<PrivateRoute exact path="/dash" component={Dashboard}></PrivateRoute>
 					<PrivateRoute exact path="/dash/folder/:folderID" component={Dashboard}></PrivateRoute>
+					<PrivateRoute exact path="/drives" component={Drives}></PrivateRoute>
 				</Switch>
 			</Router>
 		</>

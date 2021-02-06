@@ -14,7 +14,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { auth } from "../../firebase";
+import { masterAuth as auth } from "../../firebase";
 
 const useStyles = makeStyles((theme) => ({
 	paper: {

@@ -1,4 +1,4 @@
-import { auth } from "../../firebase";
+import { masterAuth as auth } from "../../firebase";
 import {
 	Avatar,
 	Box,
@@ -80,7 +80,8 @@ const SignIn = (props) => {
 
 	useEffect(() => {
 		if (props.auth.loggedIn) {
-			props.history.push("dash/folder/root_folder");
+			// props.history.push("dash/folder/root_folder");
+			props.history.push("drives");
 		}
 	});
 

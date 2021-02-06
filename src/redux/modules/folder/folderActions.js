@@ -1,5 +1,5 @@
 import { SELECT_FOLDER, UPDATE_FOLDER, SET_CHILD_FOLDERS, SET_CHILD_FILES } from "./folderTypes";
-import { database } from "../../../firebase";
+import { masterDatabase as database } from "../../../firebase";
 
 export const setFolder = (folderID = null, folder = null) => dispatch => {
 	dispatch({
