@@ -57,6 +57,8 @@ const SignIn = (props) => {
 	const [pass, setPass] = React.useState("");
 	const [err, setErr] = React.useState({});
 
+	console.log(process.env.REACT_APP_API_KEY_MASTER);
+
 	const handleSubmit = (e) => {
 		auth.signInWithEmailAndPassword(email, pass)
 			.then(async ({ user }) => {
