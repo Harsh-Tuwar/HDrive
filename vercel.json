@@ -1,11 +1,11 @@
 {
 	"version": 2,
 	"env": {
-		"REACT_APP_API_KEY_MASTER": "@react-app-api-key-master",
-		"REACT_APP_APP_ID_MASTER": "@react-app-app-id-master",
-		"REACT_APP_MESSAGING_SENDER_ID_MASTER": "@react-app-messaging-sender-id-master",
-		"REACT_APP_STORAGE_BUCKET_MASTER": "@react-app-storage-bucket-master",
-		"REACT_APP_PROJECT_ID_MASTER": "@react-app-project-id-master",
-		"REACT_APP_AUTH_DOMAIN_MASTER": "@react-app-auth-domain-master"
+		"REACT_APP_API_KEY_MAIN": "AIzaSyDPIOklqvwy7OpxF_SFtJ2QJngIsA4bPiE",
+		"REACT_APP_AUTH_DOMAIN_MAIN": "hdrive-main.firebaseapp.com",
+		"REACT_APP_PROJECT_ID_MAIN": "hdrive-main",
+		"REACT_APP_STORAGE_BUCKET_MAIN": "hdrive-main.appspot.com",
+		"REACT_APP_MESSAGING_SENDER_ID_MAIN": "682181766787",
+		"REACT_APP_APP_ID_MAIN": "1:682181766787:web:39eb3c4013645ca60235b6"
 	}
 }
