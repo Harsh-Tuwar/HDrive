@@ -6,12 +6,12 @@ import "firebase/storage";
 
 // Master Project
 const firebaseConfigMaster = {
-	apiKey: process.env.REACT_APP_API_KEY,
-	authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-	projectId: process.env.REACT_APP_PROJECT_ID,
-	storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-	messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-	appId: process.env.REACT_APP_APP_ID
+	apiKey: process.env.REACT_APP_API_KEY_MASTER,
+	authDomain: process.env.REACT_APP_AUTH_DOMAIN_MASTER,
+	projectId: process.env.REACT_APP_PROJECT_ID_MASTER,
+	storageBucket: process.env.REACT_APP_STORAGE_BUCKET_MASTER,
+	messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID_MASTER,
+	appId: process.env.REACT_APP_APP_ID_MASTER
 };
 
 const masterApp = firebase.initializeApp(firebaseConfigMaster, "masterApp");
