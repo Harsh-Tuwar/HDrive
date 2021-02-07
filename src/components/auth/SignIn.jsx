@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
 		height: "100vh",
 	},
 	image: {
-		backgroundImage: "url(https://source.unsplash.com/random)",
+		backgroundImage: "url(logo.png)",
 		backgroundRepeat: "no-repeat",
 		backgroundColor:
 			theme.palette.type === "light" ? theme.palette.grey[50] : theme.palette.grey[900],
-		backgroundSize: "cover",
+		backgroundSize: "auto",
 		backgroundPosition: "center",
 	},
 	paper: {
@@ -88,8 +88,8 @@ const SignIn = (props) => {
 	return (
 		<Grid container component="main" className={classes.root}>
 			<CssBaseline />
-			<Grid item xs={false} sm={4} md={7} className={classes.image} />
-			<Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+			<Grid item xs={false} sm={3} md={5} className={classes.image} />
+			<Grid item xs={12} sm={9} md={7} component={Paper} elevation={6} square>
 				<div className={classes.paper}>
 					<Avatar className={classes.avatar}>
 						<LockOutlinedIcon />
