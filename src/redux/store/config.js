@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "development") {
 		// ...options
 	});
 
-	middlewares.push(loggerMiddleware);
+	// middlewares.push(loggerMiddleware);
 }
 
 /**

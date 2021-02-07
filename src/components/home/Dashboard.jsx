@@ -10,9 +10,6 @@ import React from "react";
 import { MyContextMenu } from "../layout";
 
 const useStyles = makeStyles((theme) => ({
-	dashFont: {
-		fontFamily: "futura-pt,system-ui,Helvetica Neue,sans-serif",
-	},
 	infoContainer: {
 		marginTop: theme.spacing(1)
 	}

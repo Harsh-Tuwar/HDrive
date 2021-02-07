@@ -80,8 +80,8 @@ const SignIn = (props) => {
 
 	useEffect(() => {
 		if (props.auth.loggedIn) {
-			// props.history.push("drives");
-			props.history.push("dash/folder/root_folder");
+			props.history.push("drives");
+			// props.history.push("dash/folder/root_folder");
 		}
 	});
 

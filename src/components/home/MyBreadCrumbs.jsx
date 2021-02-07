@@ -2,14 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Breadcrumbs } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-const MyBreadCrumbs = ({ currentFolder }) => {
+const MyBreadCrumbs = ({ currentFolder, project }) => {
 	const handleClick = () => {
-		console.log("hasd");
+		return;
 	};
 
 	const rootFolder = { id: "root_folder", name: "Root", path: [] };
-	const route = (!currentFolder?.name) ? "/" : `/dash/folder/${currentFolder.id}`;
+	const route = (!currentFolder?.name) ? "/" : `drives/${project.currentProject}/dash/${currentFolder.id}`;
 	const name = currentFolder?.name ?? "Root"; 
 	let path = currentFolder === rootFolder ? [] : [];
 	
@@ -20,7 +21,7 @@ const MyBreadCrumbs = ({ currentFolder }) => {
 			{path.map((folder, index) => {
 				return <Link
 					key={index}
-					to={`/dash/folder/${folder.id}`}
+					to={`drives/0/dash/${folder.id}`}
 					onClick={handleClick}
 					aria-current="page"
 				>
@@ -40,8 +41,15 @@ const MyBreadCrumbs = ({ currentFolder }) => {
 	);
 };
 
+const mapStateToProps = state => ({
+	project: state.project
+});
+
 MyBreadCrumbs.propTypes = {
-	currentFolder: PropTypes.object
+	currentFolder: PropTypes.object,
+	project: PropTypes.object.isRequired
 };
  
-export default MyBreadCrumbs;
+export default connect(
+	mapStateToProps
+)(MyBreadCrumbs);

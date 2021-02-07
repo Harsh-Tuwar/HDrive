@@ -40,7 +40,7 @@ const drive1 = firebase.initializeApp(firbaseConfig1, "drive1");
 
 const d1Firestore = drive1.firestore();
 export const d1Storage = drive1.storage();
-export const d1atabase = {
+export const d1Database = {
 	folders: d1Firestore.collection("folders"),
 	files: d1Firestore.collection("files"),
 	formatDoc: doc => { return { id: doc.id, ...doc.data() }; },
