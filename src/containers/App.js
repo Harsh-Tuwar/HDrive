@@ -22,7 +22,8 @@ const App = () => {
 		
 		test();
 	}, []);
-		
+	
+	console.log("apiKey", process.env);
 	document.addEventListener("contextmenu", (e) => e.preventDefault());
 	return(
 		<Provider store={store}>
