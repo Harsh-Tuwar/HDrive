@@ -22,9 +22,7 @@ const App = () => {
 		
 		test();
 	}, []);
-	
-	console.log(process.env.REACT_APP_API_KEY_MASTER);
-	
+		
 	document.addEventListener("contextmenu", (e) => e.preventDefault());
 	return(
 		<Provider store={store}>
