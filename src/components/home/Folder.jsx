@@ -24,7 +24,7 @@ const Folder = ({ folder }) => {
 			className={classes.btn}
 			startIcon={<FolderIcon />}
 			component={Link}
-			to={`drives/0/dash/${folder.id}`}
+			to={`${folder.id}`}
 		>
 			{(folder.name.length > 29) ? folder.name.slice(0, 25).concat("...") : folder.name}
 		</Button>

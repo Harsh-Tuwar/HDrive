@@ -4,6 +4,7 @@ import { Greetings } from "./index";
 import { setProject } from "../../redux/modules/project/projectActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { updateFolder } from "../../redux/modules/folder/folderActions";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const Drives = ({ setProject, history, project, folder }) => {
+const Drives = ({ setProject, history, project, folder, updateFolder }) => {
 	const classes = useStyles();
 
 	if (project.currentProject != null) {
@@ -31,10 +32,14 @@ const Drives = ({ setProject, history, project, folder }) => {
 		folder.childFiles = [];
 	}
 
+	React.useEffect(() => {
+		updateFolder();
+	}, []);
+
 	const handleProjectSelect = (i) => {
 		if (i != null) {
 			setProject(i);
-			history.push(`drives/${i}/dash/root_folder`);
+			history.push(`drives/${i}/dash/drive_root`);
 		}
 	};
 
@@ -43,23 +48,23 @@ const Drives = ({ setProject, history, project, folder }) => {
 			<CssBaseline />
 			<Greetings />
 			<Grid container direction="row" spacing={4} className={classes.root}>
-				<Grid item xs={12} md={6}>
+				<Grid item xs={6} md={4}>
 					<Card className={classes.card} onClick={() => handleProjectSelect(0)}>
 						<CardActionArea >
 							<CardContent>
 								<Typography gutterBottom variant="body1" color="textPrimary" component="p">
-									Storage 0
+									Drive 0
 								</Typography>
 							</CardContent>
 						</CardActionArea>
 					</Card>
 				</Grid>
-				<Grid item xs={12} md={6}>
+				<Grid item xs={6} md={4}>
 					<Card className={classes.card} onClick={() => handleProjectSelect(1)}>
 						<CardActionArea>
 							<CardContent>
 								<Typography gutterBottom variant="body1" color="textPrimary" component="p">
-									Storage 1
+									Drive 1
 								</Typography>
 							</CardContent>
 						</CardActionArea>
@@ -74,7 +79,8 @@ Drives.propTypes = {
 	setProject: PropTypes.func.isRequired,
 	history: PropTypes.object.isRequired,
 	project: PropTypes.object.isRequired,
-	folder: PropTypes.object.isRequired
+	folder: PropTypes.object.isRequired,
+	updateFolder: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -84,5 +90,5 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ setProject }
+	{ setProject, updateFolder }
 )(Drives);

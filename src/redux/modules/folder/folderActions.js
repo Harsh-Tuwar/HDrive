@@ -15,7 +15,7 @@ export const updateFolder = (folderID = null) => (dispatch, getState) => {
 
 	if (!database.folders) return;
 	
-	if (folderID && folderID != "root_folder") {
+	if (folderID && folderID != "drive_root") {
 		database.folders
 			.doc(folderID)
 			.get()

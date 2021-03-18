@@ -9,9 +9,9 @@ const MyBreadCrumbs = ({ currentFolder, project }) => {
 		return;
 	};
 
-	const rootFolder = { id: "root_folder", name: "Root", path: [] };
-	const route = (!currentFolder?.name) ? "/" : `drives/${project.currentProject}/dash/${currentFolder.id}`;
-	const name = currentFolder?.name ?? "Root"; 
+	const rootFolder = { id: "drive_root", name: "Drive Root", path: [] };
+	const route = (!currentFolder?.name) ? `drives/${project.currentProject}/dash/${currentFolder.id}` : "/drives";
+	const name = currentFolder?.name ?? "Drive Root"; 
 	let path = currentFolder === rootFolder ? [] : [];
 	
 	if (currentFolder) path = [...path, ...currentFolder.path];
@@ -21,7 +21,7 @@ const MyBreadCrumbs = ({ currentFolder, project }) => {
 			{path.map((folder, index) => {
 				return <Link
 					key={index}
-					to={`drives/0/dash/${folder.id}`}
+					to={`${folder.id}`}
 					onClick={handleClick}
 					aria-current="page"
 				>

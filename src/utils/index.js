@@ -30,11 +30,6 @@ export const checkAuthToken = async (store) => {
 				type: SET_CURRENT_USER,
 				payload: u
 			});
-			
-			store.dispatch({
-				type: UPDATE_FOLDER,
-				payload: null
-			});
 		} else {
 			await auth.signOut();
 		}
