@@ -30,10 +30,10 @@ const AuthenticatedPage = ({ component: Component, properties, setCurrentUser}) 
 			<AppBar position="static">
 				<Toolbar>
 					<IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-						<Link to="/" style={{color: "white"}}><Cloud /></Link>
+						<Link to="/drives" style={{color: "white"}}><Cloud /></Link>
 					</IconButton>
 					<Typography variant="h6" className={classes.title}>
-						<Link to="/" style={{color: "white"}}>HDrive</Link>
+						<Link to="/drives" style={{color: "white"}}>HDrive</Link>
           			</Typography>
 					<div>
 						<IconButton

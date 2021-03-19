@@ -1,5 +1,5 @@
 import { SELECT_FOLDER, UPDATE_FOLDER, SET_CHILD_FOLDERS, SET_CHILD_FILES } from "./folderTypes";
-import { masterDatabase as database } from "../../../firebase";
+import { getCurrentInstances } from "../../../utils";
 
 export const setFolder = (folderID = null, folder = null) => dispatch => {
 	dispatch({
@@ -8,8 +8,14 @@ export const setFolder = (folderID = null, folder = null) => dispatch => {
 	});
 };
 
-export const updateFolder = (folderID = null) => dispatch => {
-	if (folderID && folderID != "root_folder") {
+export const updateFolder = (folderID = null) => (dispatch, getState) => {
+	const project = getState().project.currentProject;
+
+	const { database } = getCurrentInstances(project);
+
+	if (!database.folders) return;
+	
+	if (folderID && folderID != "drive_root") {
 		database.folders
 			.doc(folderID)
 			.get()
@@ -32,7 +38,13 @@ export const updateFolder = (folderID = null) => dispatch => {
 	}
 };
 
-export const setChildFolders = (folderID = null, userID) => dispatch => {
+export const setChildFolders = (folderID = null, userID) => (dispatch, getState) => {
+	const project = getState().project.currentProject;
+
+	const { database } = getCurrentInstances(project);
+
+	if (!database.folders) return;
+
 	return database.folders
 		.where("parentID", "==", folderID)
 		.where("userID", "==", userID)
@@ -45,7 +57,13 @@ export const setChildFolders = (folderID = null, userID) => dispatch => {
 		});
 };
 
-export const setChildFiles = (folderID = null, userID) => dispatch => {
+export const setChildFiles = (folderID = null, userID) => (dispatch, getState) => {
+	const project = getState().project.currentProject;
+
+	const { database } = getCurrentInstances(project);
+	
+	if (!database.files) return;
+
 	return database.files
 		.where("folderID", "==", folderID)
 		.where("userID", "==", userID)

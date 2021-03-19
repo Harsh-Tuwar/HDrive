@@ -7,7 +7,7 @@ const initialState = {
 	childFiles: []
 };
 
-const ROOT_FOLDER = { name: "Root", id: "root_folder", path: [] };
+const ROOT_FOLDER = { name: "Drive Root", id: "drive_root", path: [] };
 
 export default (state = initialState, action) => {
 	switch (action.type) {

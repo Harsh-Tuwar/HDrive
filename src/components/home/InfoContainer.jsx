@@ -1,13 +1,15 @@
-import React from "react";
-import { Grid, Button, makeStyles, FormControl, Input, InputLabel, LinearProgress, IconButton } from "@material-ui/core";
 import { Add, CloudUpload, Close } from "@material-ui/icons";
-import ReactDOM from "react-dom";
-import { masterDatabase as database, masterAuth as auth, masterStorage as storage } from "../../firebase";
+import { AlertTitle, Alert } from "@material-ui/lab";
+import { Grid, Button, makeStyles, FormControl, Input, InputLabel, LinearProgress, IconButton } from "@material-ui/core";
+import { masterAuth as auth } from "../../firebase";
 import { MyBreadCrumbs } from "./index";
 import { MyDialog } from "../misc";
-import PropTypes from "prop-types";
 import { v4 } from "uuid";
-import { AlertTitle, Alert } from "@material-ui/lab";
+import PropTypes from "prop-types";
+import React from "react";
+import ReactDOM from "react-dom";
+import { connect } from "react-redux";
+import { getCurrentInstances } from "../../utils";
 
 const useStyles = makeStyles((theme) => ({
 	breadcrumb: {
@@ -25,12 +27,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const InfoContainer = ({ currentFolder }) => {
+const InfoContainer = ({ currentFolder, project }) => {
 	const classes = useStyles();
 	const [uploadingFiles, setUploadingFiles] = React.useState([]);
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [name, setName] = React.useState("");
 	const { currentUser } = auth;
+	const { storage, database } = getCurrentInstances(project.currentProject);
 
 	const handleUpload = (e) => {
 		const file = e.target.files[0];
@@ -239,8 +242,15 @@ const InfoContainer = ({ currentFolder }) => {
 	);
 };
 
+const mapStateToProps = state => ({
+	project: state.project
+});
+
 InfoContainer.propTypes = {
-	currentFolder: PropTypes.object
+	currentFolder: PropTypes.object,
+	project: PropTypes.object.isRequired
 };
 
-export default InfoContainer;
+export default connect(
+	mapStateToProps
+)(InfoContainer);

@@ -53,9 +53,6 @@ const ResetPass = (props) => {
 	const classes = useStyles();
 	const [email, setE] = React.useState("");
 	const [showAlert, setShowAlert] = React.useState(false);
-	const [alertMsg, setAlertMsg] = React.useState("");
-	const [alertSeverity, setAlertSeverity] = React.useState("");
-	const [title, setTitle] = React.useState("");
 
 	const handleSubmit = async (e) => {
 		if (email.length > 0) {
@@ -76,7 +73,6 @@ const ResetPass = (props) => {
 				}).finally(() => {
 					setShowAlert(true);
 				});
-
 		}
 		
 		e.preventDefault();
