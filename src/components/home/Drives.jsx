@@ -1,10 +1,10 @@
-import React from "react";
+import { connect } from "react-redux";
 import { Container, CssBaseline, Grid, makeStyles, Card, CardActionArea, CardContent, Typography } from "@material-ui/core";
 import { Greetings } from "./index";
 import { setProject } from "../../redux/modules/project/projectActions";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { updateFolder } from "../../redux/modules/folder/folderActions";
+import PropTypes from "prop-types";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -14,7 +14,8 @@ const useStyles = makeStyles((theme) => ({
 		height: 100,
 		textAlign: "center",
 		display: "flex",
-		margin: "auto"
+		margin: "auto",
+		borderRadius: 15
 	},
 	media: {
 		height: 100
@@ -65,6 +66,17 @@ const Drives = ({ setProject, history, project, folder, updateFolder }) => {
 							<CardContent>
 								<Typography gutterBottom variant="body1" color="textPrimary" component="p">
 									Drive 1
+								</Typography>
+							</CardContent>
+						</CardActionArea>
+					</Card>
+				</Grid>
+				<Grid item xs={6} md={4}>
+					<Card className={classes.card} onClick={() => handleProjectSelect(2)}>
+						<CardActionArea>
+							<CardContent>
+								<Typography gutterBottom variant="body1" color="textPrimary" component="p">
+									Drive 2
 								</Typography>
 							</CardContent>
 						</CardActionArea>

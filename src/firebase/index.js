@@ -46,3 +46,24 @@ export const d1Database = {
 	formatDoc: doc => { return { id: doc.id, ...doc.data() }; },
 	getCurrentTimeStamp: firebase.firestore.FieldValue.serverTimestamp
 };
+
+// Drive 2
+const firbaseConfig2 = {
+	apiKey: process.env.REACT_APP_API_KEY_D2,
+	authDomain: process.env.REACT_APP_AUTH_DOMAIN_D2,
+	projectId: process.env.REACT_APP_PROJECT_ID_D2,
+	storageBucket: process.env.REACT_APP_STORAGE_BUCKET_D2,
+	messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID_D2,
+	appId: process.env.REACT_APP_APP_ID_D2
+};
+
+const drive2 = firebase.initializeApp(firbaseConfig2, "drive2");
+
+const d2Firestore = drive2.firestore();
+export const d2Storage = drive2.storage();
+export const d2Database = {
+	folders: d2Firestore.collection("folders"),
+	files: d2Firestore.collection("files"),
+	formatDoc: doc => { return { id: doc.id, ...doc.data() }; },
+	getCurrentTimeStamp: firebase.firestore.FieldValue.serverTimestamp
+};
