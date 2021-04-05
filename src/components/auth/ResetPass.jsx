@@ -59,17 +59,9 @@ const ResetPass = (props) => {
 			auth
 				.sendPasswordResetEmail(email)
 				.then(() => {
-					setAlertMsg("Email has been sent! You will be redirected to the sign-in page now!");
-					setAlertSeverity("success");
-					setTitle("Email Sent!");
-
 					setTimeout(() => {
 						props.history.push("/");
 					}, 3000);
-				}).catch(() => {
-					setAlertMsg("We can't seem to find your email address! Mind confirming it and trying again?");
-					setAlertSeverity("error");
-					setTitle("Error Sending Email!");
 				}).finally(() => {
 					setShowAlert(true);
 				});

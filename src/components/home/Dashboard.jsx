@@ -1,7 +1,7 @@
 import { masterAuth as auth } from "../../firebase";
 import { connect } from "react-redux";
 import { FilesContainer, FoldersContainer, Greetings} from "./index";
-import { Container, makeStyles, CssBaseline } from "@material-ui/core";
+import { Container, makeStyles, CssBaseline, Typography } from "@material-ui/core";
 import { updateFolder, setChildFolders, setChildFiles } from "../../redux/modules/folder/folderActions";
 import { useParams } from "react-router-dom";
 import InfoContainer from "./InfoContainer";
@@ -48,6 +48,15 @@ const Dashboard = (props) => {
 		}
 	};
 
+	const handleOpen = () => {
+		if (item.hasOwnProperty("url")) { // file
+			
+		} else { // folder
+			const shareBtn = document.getElementById("share");
+			shareBtn.remove();
+		}
+	};
+
 	React.useEffect(() => {
 		props.updateFolder(folderID);
 		props.setChildFolders(folderID, me.uid);
@@ -72,10 +81,13 @@ const Dashboard = (props) => {
 				<InfoContainer currentFolder={folder} />
 			</div>
 			<br /><br />
+			<Typography variant="overline" component="div" gutterBottom paragraph>Folders</Typography>
 			<FoldersContainer childFolders={childFolders} handleClick={handleClick} />
 			{childFolders.length > 0 && childFiles.length > 0 && <hr style={{ margin: "40px 0px" }} />}
+			<br />
+			<Typography variant="overline" component="div" gutterBottom paragraph>Files</Typography>
 			<FilesContainer childFiles={childFiles} handleClick={handleClick} />
-			{state.x && state.y && <MyContextMenu posX={state.x} posY={state.y} handleClose={handleClose} />}
+			{state.x && state.y && <MyContextMenu posX={state.x} posY={state.y} handleClose={handleClose} handleOpen={handleOpen} />}
 		</Container>
 	);
 };

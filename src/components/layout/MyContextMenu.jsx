@@ -3,11 +3,12 @@ import { Menu, MenuItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import PropTypes from "prop-types";
 import { OpenInNew, Share, Edit, Delete, Info } from "@material-ui/icons";
 
-const MyContextMenu = ({ posX, posY, handleClose }) => {
+const MyContextMenu = ({ posX, posY, handleClose, handleOpen }) => {
 	return (
 		<Menu
 			keepMounted
 			open={posY !== null}
+			onEnter={handleOpen}
 			onClose={handleClose}
 			anchorReference="anchorPosition"
 			anchorPosition={
@@ -53,7 +54,8 @@ const MyContextMenu = ({ posX, posY, handleClose }) => {
 MyContextMenu.propTypes = {
 	posX: PropTypes.number.isRequired,
 	posY: PropTypes.number.isRequired,
-	handleClose: PropTypes.func.isRequired
+	handleClose: PropTypes.func.isRequired,
+	handleOpen: PropTypes.func.isRequired
 };
  
 export default MyContextMenu;
